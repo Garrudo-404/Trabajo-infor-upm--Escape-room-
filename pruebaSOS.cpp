@@ -34,7 +34,7 @@ int prueba3() {//codigo morse
                 intentos--;
                 break;
             case 1:
-                printf("\nEl codigo es incorrecto, la senal sera inhibida.\nVuelve a intentarlo, este es tu ultimo intento\n");
+                printf("\nEl codigo es incorrecto, la senal sera inhibida.\n");
                 intentos--;
                 break;      
         }
