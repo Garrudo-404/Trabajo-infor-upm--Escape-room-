@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <time.h>
+int main() {
+	int h;
+	float tr;
+	clock_t t1,t2;
+	t1 = clock();;
+	printf("Este programa cuenta los segundos en los que transcurre\n Introduce un numero entero para comprobar\n");
+	scanf_s("%d", &h);
+	t2 = clock() - t1;
+	tr = float(t2) / CLOCKS_PER_SEC;
+	printf("%.3f segundos", tr);
+}
