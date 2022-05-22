@@ -44,7 +44,6 @@ int main()
 	}
 	else {
 		recogerRanking_fichero(j1);
-		printf("hello world\n");
 	}
 
 	//declaracion de jugador
@@ -53,13 +52,13 @@ int main()
 
 
 	//desarrollo del juego
-	int puntuacion = 0;
-	prueba1(&puntuacion);
-	prueba2(&puntuacion);
-	prueba4(&puntuacion);
-	prueba5(&puntuacion);
-	prueba6(&puntuacion);
-	prueba7(&puntuacion);
+	main.puntuacion = 0;
+	prueba1(&main.puntuacion);
+	prueba2(&main.puntuacion);
+	prueba4(&main.puntuacion);
+	prueba5(&main.puntuacion);
+	prueba6(&main.puntuacion);
+	prueba7(&main.puntuacion);
 	
 
 	//guardar datos del jugados en un fichero
