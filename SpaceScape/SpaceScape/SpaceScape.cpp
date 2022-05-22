@@ -8,6 +8,8 @@
 
 void prueba1(void);
 void prueba2(void);
+void prueba3(void);
+int fimg(char*, int, int);
 int prueba7(void);
 void pruebavelocidad(int*);
 int prueba4(int*, int*);
@@ -22,6 +24,8 @@ int main()
 	printf("\n");
 	prueba2();
 	// Prueba 3
+	printf("\n");
+	prueba3();
 	//Prueba 4
 	int situacion = 200, puntuacion = 0;
 	prueba4(&situacion, &puntuacion);
@@ -174,6 +178,48 @@ void pruebavelocidad(int* fallos)
 		break;
 	}
 }
+
+void prueba3()
+{
+    printf("Para poder encender los motores de la cápsula, tienes que introducir una clave de 9 dígitos.Sabes que la");
+    printf("clave solo la sabía el capitán, por eso intentas recordar sus pertenencias");
+    printf("personales para ver si encuentras alguna pista. Encuentras su libro preferido, una fotografía y su reloj.");
+    int clave[9] = { 2,6,6,0,3,6,2,9,7 }, i = 0, tamv1, tamv2, sol;//1984+2330+26031983=266036297.
+    char img1[] = "images/1984.jpg", img2[] = "images/foto con fecha.jpeg", img3[] = "images/reloj.jpg";
+    tamv1 = 800, tamv2 = 700;
+    fimg(img1, tamv1, tamv2);
+    fimg(img2, tamv1, tamv2);
+    fimg(img3, tamv1, tamv2);
+    printf("Escribe la clave:");
+    while (i < 9) {
+        scanf_s("%d", &sol);
+        if (sol == clave[i])
+            i++;
+        else
+            printf("Incorrecto,vuelve a intentarlo\n");
+    }
+    printf("Enhorabuena, has pasado la prueba\n");
+}   
+int fimg(char* im, int tam1, int tam2) {
+    sf::RenderWindow window{ sf::VideoMode(tam1,tam2), "Escaperoom" };
+    sf::Texture t;
+    t.loadFromFile(im);
+    sf::Sprite s(t);
+    while (window.isOpen())
+    {
+        sf::Event windowEvent;
+        while (window.pollEvent(windowEvent))
+        {
+            if (windowEvent.type == sf::Event::Closed)
+                window.close();
+        }
+        window.clear(sf::Color::White);
+        window.draw(s);
+        window.display();
+    }
+    return 0;
+}
+
 int prueba4(int* situacion, int* puntuacion)
 {
 	char d1, respU[DIM], respC[] = { "urano" };
