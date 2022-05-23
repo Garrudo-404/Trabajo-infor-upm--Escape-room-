@@ -215,7 +215,7 @@ void prueba1(int* puntuacion)
 		if (k != 0)
 		{
 			fallos++;
-			printf("%cSeguro que eres miembro de la tripulaci%cn de esta nave espa%cola?\nNo te olvides de las may%csculas\n", 168, 162, 164, 163);
+			printf("%cSeguro que eres miembro de la tripulaci%cn de esta nave espa%cola?\nNo te olvides de las may%csculas y de poner un espacio al principio\n", 168, 162, 164, 163);
 		}
 	} while (k != 0);
 	printf("Definitivamente eres miembro de esta tripulaci%cn. Enhorabuena, has conseguido el control de los mandos.\n", 162);
