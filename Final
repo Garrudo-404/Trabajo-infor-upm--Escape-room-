@@ -58,7 +58,7 @@ int main()
 	int t1, t2;
 	t1 = clock();
 	main.puntuacion = 0;
-	//prueba1(&main.puntuacion);
+	prueba1(&main.puntuacion);
 	prueba2(&main.puntuacion);
 	prueba3(&main.puntuacion);
 	prueba4(&main.puntuacion);
@@ -259,28 +259,25 @@ void prueba2(int* puntuacion) {
 }
 void prueba3(int* puntuacion)
 {
-	printf("Para poder encender los motores de la cápsula, tienes que introducir una clave de 9 dígitos.Sabes que la");
-	printf("clave solo la sabía el capitán, por eso intentas recordar sus pertenencias");
-	printf("personales para ver si encuentras alguna pista. Encuentras su libro preferido, una fotografía y su reloj.");
-	int clave[9] = { 2,6,6,0,3,6,2,9,7 }, i = 0, tamv1, tamv2, sol,fallos=0;//1984+2330+26031983=266036297.
+	printf("Error. Error. Error.\n");
+	printf("No llega combustible a los motores. El combustible es una mezcla de hidrógeno y oxígeno ");
+	printf("líquido para producir agua.\n");
+	printf("Introduzca la clave para solucionar el problema:\n");
+	int clave[3] = { 2,1,2}, i = 0, sol,fallos=0;
 	char img1[] = "images/1984.jpg", img2[] = "images/foto con fecha.jpeg", img3[] = "images/reloj.jpg";
-	tamv1 = 800, tamv2 = 700;
-	fimg(img1, tamv1, tamv2);
-	fimg(img2, tamv1, tamv2);
-	fimg(img3, tamv1, tamv2);
 	printf("Escribe la clave:");
-	while ((i < 9) && (fallos <= 3)) {
+	while ((i < 3)) {
 		scanf_s("%d", &sol);
 		if (sol == clave[i]) {
 			i++;
 		}
 		else {
-			printf("Incorrecto,vuelve a intentarlo\n");
+			printf("Tal vez los componentes químicos no estén en la proporción adecuada.\n");
 			fallos++;
 		}
 	}
-	printf("Enhorabuena, has pasado la prueba\n");
-	*puntuacion = *puntuacion + (300 - fallos * 100);
+	printf("Clave correcta. Combustible en combustión\n");
+	*puntuacion = *puntuacion + (300 - fallos * 50);
 }
 void prueba4(int* puntuacion)
 {
