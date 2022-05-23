@@ -316,58 +316,32 @@ void prueba4(int* puntuacion)
 }
 void prueba5(int* puntuacion) {
 	//Prueba 5
-	int Vt[DIM], Vu[DIM], Vresp[DIM];
-	int Vsol[] = { 2850, -50 };
+int V1[] = { 150, 50 }, V2[] = { 3000,0 }, Vsol[DIM], Vresp[DIM];
 	int i, j, cont = 0;
 	printf("La c%cpsula necesita que le indiques el vector direcci%cn que debe seguir en su trayectoria. Urano se halla a 3000M de kil%cmetros de %cl, si la nave se encuentra a 50M de  kil%cmetros por encima de la Tierra que est%c a 150M de  kil%cmetros, ¿Cu%cl es el vector direcci%cn que la nave debe seguir? ", 160, 162, 162, 130, 162, 160, 162, 160, 162);
-
-	printf("\n\nV1: ");
 	for (i = 0; i < DIM; i++)
 	{
-		scanf_s("%d", &Vt[i]);
+		Vsol[i] = V2[i] - V1[i];
 	}
-	printf("\n\nV2: ");
-	for (i = 0; i < DIM; i++)
-	{
-		scanf_s("%d", &Vu[i]);
-	}
-	for (i = 0; i < DIM; i++)
-	{
-		Vresp[i] = Vu[i] - Vt[i];
-	}
-	for (i = 0; i < DIM; i++)
-	{
-		if (Vresp[i] != Vsol[i])
-		{
-			while (Vresp[i] != Vsol[i])
-			{
-				printf("\nRevisa los c%clculos.", 133);
-				printf("\n\nV1: ");
-				for (i = 0; i < DIM; i++)
-				{
-					scanf_s("%d", &Vt[i]);
-				}
-				printf("\n\nV2: ");
-				for (i = 0; i < DIM; i++)
-				{
-					scanf_s("%d", &Vu[i]);
-				}
-				for (i = 0; i < DIM; i++)
-				{
-					Vresp[i] = Vu[i] - Vt[i];
-				}
+	i = 0;
+	while (i < DIM) {
+		printf("Introduce el vector:\n");
+		for (j = 0; j < DIM; j++) {
+			scanf_s("%d", &Vresp[j]);
+		}
+		for (j = 0; j < DIM; j++) {
+			if (Vsol[j] == Vresp[j]) {
+				i++;
+			}
+			else {
+				printf("Vuelve a intentarlo\n");
+				cont++;
+				break;
 			}
 		}
-		if (Vresp[i] == Vsol[i])
-		{
-			cont++;
-		}
 
 	}
-	if (cont == 2)
-	{
-		printf("\nDirecci%cn correctamente introducida", 162);
-	}
+	printf("Enhorabuena has pasado la prueba\n");
 }
 void prueba6(int* puntuacion)
 {
