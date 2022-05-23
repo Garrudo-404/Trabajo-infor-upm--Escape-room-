@@ -228,20 +228,31 @@ void prueba2(int* puntuacion) {
 	printf("Para poder encender los motores de la cápsula, tienes que introducir una clave de 9 dígitos.Sabes que la");
 	printf("clave solo la sabía el capitán, por eso intentas recordar sus pertenencias");
 	printf("personales para ver si encuentras alguna pista. Encuentras su libro preferido, una fotografía y su reloj.");
-	int clave[9] = { 2,6,6,0,3,6,2,9,7 }, i = 0, tamv1, tamv2, sol;//1984+2330+26031983=266036297.
+	int clave[9] = { 2,6,6,0,3,6,2,9,7 }, i = 0, tamv1, tamv2, sol[9];//1984+2330+26031983=266036297.
 	char img1[] = "images/1984.jpg", img2[] = "images/foto con fecha.jpeg", img3[] = "images/reloj.jpg";
 	tamv1 = 800, tamv2 = 700;
 	fimg(img1, tamv1, tamv2);
 	fimg(img2, tamv1, tamv2);
 	fimg(img3, tamv1, tamv2);
-	printf("Escribe la clave:");
-	while ((i < 9) && fallos <= 3) {
-		scanf_s("%d", &sol);
-		if (sol == clave[i])
-			i++;
-		else
-			printf("Incorrecto,vuelve a intentarlo\n");
-		fallos++;
+	printf("Escribe la clave: ");
+	for ( i = 0; i < 9; i++)
+	{
+		scanf_s("%d", &sol[i]);
+		if (sol[i]==clave[i])
+		{
+			printf("Vas en buen camino.\n");
+		}
+		else if (sol[i]!=clave[i])
+		{
+			while (sol[i] != clave[i])
+			{
+				printf("Error, prueba otra vez: ");
+				fallos++;
+				scanf_s("%d", &sol[i]);
+			}
+
+		}
+
 	}
 	printf("Enhorabuena, has pasado la prueba\n");
 	*puntuacion = *puntuacion + (300 - fallos * 100);
