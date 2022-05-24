@@ -274,6 +274,7 @@ void prueba4(int* puntuacion)
 
 	do {  //usuario debe decidir
 		printf("El sistema de refrigeracion de los motores principales está fallando!\nDebe introducir la contraseña del sistema. Desea hacerlo? S/N: ");
+		getchar();
 		scanf_s("%c", &d1);
 		if (not((d1 == 's') || (d1 == 'n'))) {
 			printf("\nno entiendo su respuesta...\n");
