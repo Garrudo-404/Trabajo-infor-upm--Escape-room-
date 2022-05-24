@@ -41,11 +41,11 @@ int main()
 	//primero leer un fichero y guardar en una cadena sus datos
 	int n = conteolista();
 	jugador* j1;
-	do{
+	do {
 		j1 = (jugador*)malloc((n + 1) * sizeof(int)); //malloc dimension de la lista
 	} while (j1 == NULL);
 
-	
+
 	recogerRanking_fichero(j1);
 	//declaracion de jugador
 	jugador main; int t1, t2;
@@ -55,15 +55,15 @@ int main()
 	//desarrollo del juego
 	t1 = clock();
 	main.puntuacion = 0;
-	//prueba1(&main.puntuacion);
-	//prueba2(&main.puntuacion);
-	//prueba3(&main.puntuacion);
-	//prueba4(&main.puntuacion);
+	prueba1(&main.puntuacion);
+	prueba2(&main.puntuacion);
+	prueba3(&main.puntuacion);
+	prueba4(&main.puntuacion);
 	prueba5(&main.puntuacion);
-	//prueba6(&main.puntuacion);
-	//prueba7(&main.puntuacion);
+	prueba6(&main.puntuacion);
+	prueba7(&main.puntuacion);
 	t2 = clock();
-	printf("\nEnorabuena has completado el juego en %d segundos.\n", (t2 - t1)/1000);
+	printf("\nEnorabuena has completado el juego en %d segundos.\n", (t2 - t1) / 1000);
 
 	//guardar datos del jugados en un fichero
 	if (j1 == NULL) {
@@ -78,9 +78,8 @@ int main()
 
 //funciones asociadas al ranking
 void introducirnombre(jugador* main) {
-	printf("Para empezar a jugar introduce tu nickname: \n");
+	printf("Para empezar a jugar introduce tu nickname: ");
 	gets_s(main->nombre);
-	main->puntuacion=0;
 }
 void recogerRanking_fichero(jugador j1[]) {
 	int i = 0;
@@ -97,12 +96,12 @@ void recogerRanking_fichero(jugador j1[]) {
 }
 int conteolista(void) {
 	int n = 0, puntuacion;
-	char nombre[DIM],null[5]="null";
+	char nombre[DIM];
 	FILE* f1;
 	f1 = fopen("ranking.txt", "r");
 	if (f1 == NULL) {
 		f1 = fopen("ranking.txt", "w+");
-		fprintf(f1, "%s %d", null, -1);
+		fprintf(f1, "%s %d", "remi", 100);
 	}
 	while (feof(f1) == 0)//lectura
 	{
@@ -139,8 +138,8 @@ void ordenarRanking(jugador j1[], jugador main) {
 
 
 		}
-		for (int i = 0; i < n; i++) {//imprime el ranking
-			printf("%s : %d\n", j2[i].nombre, j2[i].puntuacion);
+		for (int i = 0; i <= n; i++) {//imprime el ranking
+			printf("j2 %s : %d\n", j2[i].nombre, j2[i].puntuacion);
 		}
 
 		FILE* f1; int i = 0;
@@ -152,7 +151,7 @@ void ordenarRanking(jugador j1[], jugador main) {
 		}
 		fclose(f1);
 	}
-}  
+}
 
 //funciones asociadas a las pruebas del juego
 void prueba1(int* puntuacion)
@@ -216,7 +215,7 @@ void prueba1(int* puntuacion)
 			fallo2++;
 			printf("%cSeguro que eres miembro de la tripulaci%cn de esta nave espa%cola?\nNo te olvides de las may%csculas\n", 168, 162, 164, 163);
 		}
-	} while (k != 0 && fallo2<=3);
+	} while (k != 0 && fallo2 <= 3);
 	printf("Definitivamente eres miembro de esta tripulaci%cn. Enhorabuena, has conseguido el control de los mandos.\n", 162);
 	if (fallos <= 10) {
 		*puntuacion = *puntuacion + (1000 - fallos * 100);
@@ -224,12 +223,12 @@ void prueba1(int* puntuacion)
 }
 void prueba2(int* puntuacion) {
 	int fallos = 0;
-	printf("Para poder encender los motores de la c%cpsula, tienes que introducir una clave de 9 d%cgitos.\n", 160, 161);
-	printf("Sabes que la clave solo la sab%ca el capit%cn, por eso intentas recordar sus pertenencias", 161, 160);
-	printf("personales para ver si encuentras alguna pista.\nEncuentras su libro preferido, una fotograf%ca y su reloj.", 161);
+	printf("Para poder encender los motores de la cápsula, tienes que introducir una clave de 9 dígitos.Sabes que la");
+	printf("clave solo la sabía el capitán, por eso intentas recordar sus pertenencias");
+	printf("personales para ver si encuentras alguna pista. Encuentras su libro preferido, una fotografía y su reloj.");
 	int clave[9] = { 2,6,6,0,3,6,2,9,7 }, i = 0, tamv1, tamv2, sol;//1984+2330+26031983=266036297.
 	char img1[] = "images/1984.jpg", img2[] = "images/foto con fecha.jpeg", img3[] = "images/reloj.jpg";
-	tamv1 = 800, tamv2 = 700;
+	tamv1 = 1000, tamv2 = 1000;
 	fimg(img1, tamv1, tamv2);
 	fimg(img2, tamv1, tamv2);
 	fimg(img3, tamv1, tamv2);
@@ -242,17 +241,16 @@ void prueba2(int* puntuacion) {
 			printf("Incorrecto,vuelve a intentarlo\n");
 		fallos++;
 	}
-	printf("Clave correcta. Encendiendo motores.\n");
-	*puntuacion = *puntuacion + (300 - fallos * 30);
+	printf("Enhorabuena, has pasado la prueba\n");
+	*puntuacion = *puntuacion + (300 - fallos * 100);
 }
 void prueba3(int* puntuacion)
 {
 	printf("Error. Error. Error.\n");
-	printf("No llega combustible a los motores. El combustible es una mezcla de hidr%cgeno y ox%cgeno", 162, 161);
-	printf("l%cquido para producir agua.\n", 161);
+	printf("No llega combustible a los motores. El combustible es una mezcla de hidrógeno y oxígeno ");
+	printf("líquido para producir agua.\n");
 	printf("Introduzca la clave para solucionar el problema:\n");
-	int clave[3] = { 2,1,2}, i = 0, sol,fallos=0;
-	char img1[] = "images/1984.jpg", img2[] = "images/foto con fecha.jpeg", img3[] = "images/reloj.jpg";
+	int clave[3] = { 2,1,2 }, i = 0, sol, fallos = 0;
 	printf("Escribe la clave:");
 	while ((i < 3)) {
 		scanf_s("%d", &sol);
@@ -260,11 +258,11 @@ void prueba3(int* puntuacion)
 			i++;
 		}
 		else {
-			printf("Tal vez los componentes qu%cmicos no estén en la proporción adecuada.\n", 161);
+			printf("Tal vez los componentes químicos no estén en la proporción adecuada.\n");
 			fallos++;
 		}
 	}
-	printf("Clave correcta. Combustible en combusti%cn\n", 162);
+	printf("Clave correcta. Combustible en combustión\n");
 	*puntuacion = *puntuacion + (300 - fallos * 50);
 }
 void prueba4(int* puntuacion)
@@ -274,7 +272,7 @@ void prueba4(int* puntuacion)
 	int bonus = 100, proof = 1;//variables locales
 
 	do {  //usuario debe decidir
-		printf("El sistema de refrigeraci%cn de los motores principales est%c fallando.\nDebe introducir la contrase%ca del sistema. %cDesea hacerlo? S/N: \n", 162, 160, 164, 168);
+		printf("El sistema de refrigeracion de los motores principales está fallando!\nDebe introducir la contraseña del sistema. Desea hacerlo? S/N: ");
 		getchar();
 		scanf_s("%c", &d1);
 		if (not((d1 == 's') || (d1 == 'n'))) {
@@ -290,17 +288,14 @@ void prueba4(int* puntuacion)
 
 		do {
 			getchar();
-			printf("Ya tienes todo listo para ponerte en movimiento, solo hace falta saber hacia d%cnde. Debido al choque con la nave alien%cgena, toda la m%cquina se est%c sobrecalentando.\n", 162, 161, 160, 160);
-			printf("El sistema de la c%cpsula de escape es inteligente y te pide una clave.\n", 160);
-			printf("La contrase%ca es la respuesta al siguiente acertijo, pero ten cuidado cuanto m%cs falles, menor puntuaci%cn obtendr%cs:\n", 164, 160, 162);
-			printf("El planeta m%cs fr%co del sistema solar y con 27 lunas lo ver%cs girar\n", 160, 161, 160);
+			printf("La contrasena es la respuesta al siguiente acertijo, pero ten cuidado cuanto mas falles menor puntuacion obtendras:\nEl planeta mas frio del sistema solar y con 27 lunas lo verás girar\n");
 			gets_s(respU);
 			if (strcmp(respU, respC) == 0) {
 				printf("\nEnorabuena has resuelto el acertijo\n");
 				proof = 0;
 			}
 			else {
-				printf("\nEsa no era la respuesta correcta. Vuelve a intentarlo\n");
+				printf("\nesa no era la respuesta correcta, vuelve a intentarlo\n");
 				fallos++;
 			}
 		} while (proof && fallos <= 3);
@@ -308,7 +303,7 @@ void prueba4(int* puntuacion)
 
 
 	case 'n':
-		printf("Todos nuestros actos tienen consecuencias\n");
+		printf("todos nuestros actos tienen consecuencias\n");
 		fallos = 3;
 
 		break;
@@ -319,7 +314,7 @@ void prueba5(int* puntuacion) {
 	//Prueba 5
 	int V1[] = { 150, 50 }, V2[] = { 3000,0 }, Vsol[2], Vresp[2];
 	int i, j, fallos = 0;
-	printf("La c%cpsula necesita que le indiques el vector direcci%cn que debe seguir en su trayectoria.\n Urano se halla a 3000M de kil%cmetros de %cl, si la nave se encuentra a 50M de  kil%cmetros por encima de la Tierra que est%c a 150M de  kil%cmetros, %cCu%cl es el vector direcci%cn que la nave debe seguir? ", 160, 162, 162, 130, 162, 160, 162, 168, 160, 162);
+	printf("La c%cpsula necesita que le indiques el vector direcci%cn que debe seguir en su trayectoria. Urano se halla a 3000M de kil%cmetros de %cl, si la nave se encuentra a 50M de  kil%cmetros por encima de la Tierra que est%c a 150M de  kil%cmetros, ¿Cu%cl es el vector direcci%cn que la nave debe seguir? ", 160, 162, 162, 130, 162, 160, 162, 160, 162);
 	for (i = 0; i < 2; i++)
 	{
 		Vsol[i] = V2[i] - V1[i];
@@ -328,14 +323,14 @@ void prueba5(int* puntuacion) {
 	while (i < 2) {
 		printf("Introduce el vector:\n");
 		for (j = 0; j < 2; j++) {
- 			scanf_s("%d", &Vresp[j]);
+			scanf_s("%d", &Vresp[j]);
 		}
-		for (j = 0; j < 2 ; j++) {
+		for (j = 0; j < 2; j++) {
 			if (Vsol[j] == Vresp[j]) {
 				i++;
 			}
 			else {
-				printf("%cY si revisas los c%clculos?\n", 168, 160);
+				printf("Vuelve a intentarlo\n");
 				fallos++;
 				break;
 			}
@@ -348,18 +343,18 @@ void prueba5(int* puntuacion) {
 void prueba6(int* puntuacion)
 {
 	float anos = 0; int fallolocal = 0;
-	printf("Si la ecuaci%cn de la velocidad es dx/dt,y la velocidad media de la nave es de 40.300 km/s, %ccuanto tiempo tardar%cs en a%cos hasta Urano?\n", 162, 168, 160, 164);
-	printf("Sabemos que el vector de posici%cn de Urano con respecto a la nave espacial es (2850,-50) en millones de kil%cmetros:\n", 162, 162);
+	printf("Si la ecuacion de la velocidad es dx/dt,y la velocidad media de la nave es de 40.300 km/s,cuanto tiempo tardarás en años hasta Urano?\n");
+	printf("Sabemos que el vector de posicion de urano con respecto a la nave espacial es (2850,-50) en millones de kilometros:\n");
 	do {
-		printf("Introduce el numero de a%cos:\n", 164);
+		printf("introduce el numero de años: ");
 		scanf_s("%f", &anos);
 		if (anos <= 7.8 || 8.2 <= anos) {
-			printf("\nDesgraciadamente sus c%clculos no son correctos. Vuleve a intentarlo.\n", 160);
+			printf("\nDesgraciadamente sus calculos no son correctos. Vuleve a intentarlo.\n");
 			fallolocal++;
 
 		}
 		else {
-			printf("\nSus c%clculos son exactos, tardaremos aproximadamente %.2f a%cos en llegar a Urano.\n", 160, anos, 164);
+			printf("\nSus calculos son exactos, tardaremos aproximadamente %.2f años en llegar a Urano.\n", anos);
 		}
 
 	} while ((fallolocal < 3) && (anos <= 7.8 || 8.2 <= anos));
@@ -379,25 +374,26 @@ void prueba6(int* puntuacion)
 }
 void prueba7(int* puntuacion)
 {//codigo morse
-	int intentos = 3, test; char morse[DIM];
-	printf("Al darte cuenta que el viaje puede tomarte a%cos, deber%cas mandar una se%cal de socorro.\n", 164, 161, 164);
-	printf("Ten en cuenta que deber%ca ser en algún lenguaje que solo los humanos conozcan.\n", 161);
-	printf("Escribe SOS en codigo morse utilizando '.' y '_':\n");
+	int intentos = 3, test; char morse[DIM],tamv1,tamv2;
+	tamv1 = 620, tamv2 = 400;
+	char img[] = "images/codigo morse.jpg";
+	printf("escribe SOS en codigo morse utilizando '.' y '_':\n");
+	fimg(img, tamv1, tamv2);
 	while ((strcmp(morse, "...___...")) && (intentos >= 1)) {//hasta que sea correcto
 		gets_s(morse);
 		if (abs(strcmp(morse, "...___...")) && (intentos >= 1)) {
 
 			switch (intentos) {
 			case 3:
-				printf("\nEl c%cdigo es incorrecto, la senal sera inhibida.\nVuelve a intentarlo, te quedan 2 intentos:\n", 162);
+				printf("\nEl codigo es incorrecto, la senal sera inhibida.\nVuelve a intentarlo, te quedan 2 intentos:\n");
 				intentos--;
 				break;
 			case 2:
-				printf("\nEl c%cdigo es incorrecto, la senal sera inhibida.\nVuelve a intentarlo, te quedan 1 intento:\n", 162);
+				printf("\nEl codigo es incorrecto, la senal sera inhibida.\nVuelve a intentarlo, te quedan 1 intento:\n");
 				intentos--;
 				break;
 			case 1:
-				printf("\nEl c%cdigo es incorrecto, la senal sera inhibida.\n", 162);
+				printf("\nEl codigo es incorrecto, la senal sera inhibida.\n");
 				intentos--;
 				break;
 			}
@@ -410,11 +406,11 @@ void prueba7(int* puntuacion)
 
 		break;
 	case 2:
-		printf("La senal ha sido enviada correctamente!! Lo has logrado al segundo intento\n");
+		printf("La senal ha sido enviada correctamente!! Lo has lo grado al segundo intento\n");
 		*puntuacion = *puntuacion + 200;
 		break;
 	case 1:
-		printf("La senal ha sido enviada correctamente!! Lo has logrado al %cltimo intento\n", 163);
+		printf("La senal ha sido enviada correctamente!! Lo has logrado al ultimo intento\n");
 		*puntuacion = *puntuacion + 100;
 		break;
 	case 0:
