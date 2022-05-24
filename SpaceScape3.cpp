@@ -206,7 +206,6 @@ void prueba1(int* puntuacion)
 	do
 	{
 		printf("%cQui%cn fue el primer astronauta espa%col\n", 168, 130, 164);
-		getchar();
 		gets_s(cad);
 		cad[12] = '\0';
 		k = strcmp(cad, sol2);
