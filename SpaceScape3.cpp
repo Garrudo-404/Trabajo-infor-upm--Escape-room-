@@ -80,6 +80,7 @@ int main()
 void introducirnombre(jugador* main) {
 	printf("Para empezar a jugar introduce tu nickname: ");
 	gets_s(main->nombre);
+	main->puntuacion=0;
 }
 void recogerRanking_fichero(jugador j1[]) {
 	int i = 0;
@@ -96,12 +97,12 @@ void recogerRanking_fichero(jugador j1[]) {
 }
 int conteolista(void) {
 	int n = 0, puntuacion;
-	char nombre[DIM];
+	char nombre[DIM],null[5]="null";
 	FILE* f1;
 	f1 = fopen("ranking.txt", "r");
 	if (f1 == NULL) {
 		f1 = fopen("ranking.txt", "w+");
-		fprintf(f1, "%s %d", "remi", 100);
+		fprintf(f1, "%s %d", null, -1);
 	}
 	while (feof(f1) == 0)//lectura
 	{
@@ -138,8 +139,8 @@ void ordenarRanking(jugador j1[], jugador main) {
 
 
 		}
-		for (int i = 0; i <= n; i++) {//imprime el ranking
-			printf("j2 %s : %d\n", j2[i].nombre, j2[i].puntuacion);
+		for (int i = 0; i < n; i++) {//imprime el ranking
+			printf("%s : %d\n", j2[i].nombre, j2[i].puntuacion);
 		}
 
 		FILE* f1; int i = 0;
