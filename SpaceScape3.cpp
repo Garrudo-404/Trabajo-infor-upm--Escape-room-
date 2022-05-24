@@ -224,9 +224,9 @@ void prueba1(int* puntuacion)
 }
 void prueba2(int* puntuacion) {
 	int fallos = 0;
-	printf("Para poder encender los motores de la c·psula, tienes que introducir una clave de 9 dÌgitos.Sabes que la");
-	printf("clave solo la sabÌa el capit·n, por eso intentas recordar sus pertenencias");
-	printf("personales para ver si encuentras alguna pista. Encuentras su libro preferido, una fotografÌa y su reloj.");
+	printf("Para poder encender los motores de la c√°psula, tienes que introducir una clave de 9 d√≠gitos.Sabes que la");
+	printf("clave solo la sab√≠a el capit√°n, por eso intentas recordar sus pertenencias");
+	printf("personales para ver si encuentras alguna pista. Encuentras su libro preferido, una fotograf√≠a y su reloj.");
 	int clave[9] = { 2,6,6,0,3,6,2,9,7 }, i = 0, tamv1, tamv2, sol;//1984+2330+26031983=266036297.
 	char img1[] = "images/1984.jpg", img2[] = "images/foto con fecha.jpeg", img3[] = "images/reloj.jpg";
 	tamv1 = 800, tamv2 = 700;
@@ -247,28 +247,25 @@ void prueba2(int* puntuacion) {
 }
 void prueba3(int* puntuacion)
 {
-	printf("Para poder encender los motores de la c·psula, tienes que introducir una clave de 9 dÌgitos.Sabes que la");
-	printf("clave solo la sabÌa el capit·n, por eso intentas recordar sus pertenencias");
-	printf("personales para ver si encuentras alguna pista. Encuentras su libro preferido, una fotografÌa y su reloj.");
-	int clave[9] = { 2,6,6,0,3,6,2,9,7 }, i = 0, tamv1, tamv2, sol,fallos=0;//1984+2330+26031983=266036297.
+	printf("Error. Error. Error.\n");
+	printf("No llega combustible a los motores. El combustible es una mezcla de hidr√≥geno y ox√≠geno ");
+	printf("l√≠quido para producir agua.\n");
+	printf("Introduzca la clave para solucionar el problema:\n");
+	int clave[3] = { 2,1,2}, i = 0, sol,fallos=0;
 	char img1[] = "images/1984.jpg", img2[] = "images/foto con fecha.jpeg", img3[] = "images/reloj.jpg";
-	tamv1 = 800, tamv2 = 700;
-	fimg(img1, tamv1, tamv2);
-	fimg(img2, tamv1, tamv2);
-	fimg(img3, tamv1, tamv2);
 	printf("Escribe la clave:");
-	while ((i < 9) && (fallos <= 3)) {
+	while ((i < 3)) {
 		scanf_s("%d", &sol);
 		if (sol == clave[i]) {
 			i++;
 		}
 		else {
-			printf("Incorrecto,vuelve a intentarlo\n");
+			printf("Tal vez los componentes qu√≠micos no est√©n en la proporci√≥n adecuada.\n");
 			fallos++;
 		}
 	}
-	printf("Enhorabuena, has pasado la prueba\n");
-	*puntuacion = *puntuacion + (300 - fallos * 100);
+	printf("Clave correcta. Combustible en combusti√≥n\n");
+	*puntuacion = *puntuacion + (300 - fallos * 50);
 }
 void prueba4(int* puntuacion)
 {
@@ -277,7 +274,7 @@ void prueba4(int* puntuacion)
 	int bonus = 100, proof = 1;//variables locales
 
 	do {  //usuario debe decidir
-		printf("El sistema de refrigeracion de los motores principales est· fallando!\nDebe introducir la contraseÒa del sistema. Desea hacerlo? S/N: ");
+		printf("El sistema de refrigeracion de los motores principales est√° fallando!\nDebe introducir la contrase√±a del sistema. Desea hacerlo? S/N: ");
 		scanf_s("%c", &d1);
 		if (not((d1 == 's') || (d1 == 'n'))) {
 			printf("\nno entiendo su respuesta...\n");
@@ -292,7 +289,7 @@ void prueba4(int* puntuacion)
 
 		do {
 			getchar();
-			printf("La contrasena es la respuesta al siguiente acertijo, pero ten cuidado cuanto mas falles menor puntuacion obtendras:\nEl planeta mas frio del sistema solar y con 27 lunas lo ver·s girar\n");
+			printf("La contrasena es la respuesta al siguiente acertijo, pero ten cuidado cuanto mas falles menor puntuacion obtendras:\nEl planeta mas frio del sistema solar y con 27 lunas lo ver√°s girar\n");
 			gets_s(respU);
 			if (strcmp(respU, respC) == 0) {
 				printf("\nEnorabuena has resuelto el acertijo\n");
@@ -318,7 +315,7 @@ void prueba5(int* puntuacion) {
 	//Prueba 5
 	int V1[] = { 150, 50 }, V2[] = { 3000,0 }, Vsol[2], Vresp[2];
 	int i, j, fallos = 0;
-	printf("La c%cpsula necesita que le indiques el vector direcci%cn que debe seguir en su trayectoria. Urano se halla a 3000M de kil%cmetros de %cl, si la nave se encuentra a 50M de  kil%cmetros por encima de la Tierra que est%c a 150M de  kil%cmetros, øCu%cl es el vector direcci%cn que la nave debe seguir? ", 160, 162, 162, 130, 162, 160, 162, 160, 162);
+	printf("La c%cpsula necesita que le indiques el vector direcci%cn que debe seguir en su trayectoria. Urano se halla a 3000M de kil%cmetros de %cl, si la nave se encuentra a 50M de  kil%cmetros por encima de la Tierra que est%c a 150M de  kil%cmetros, ¬øCu%cl es el vector direcci%cn que la nave debe seguir? ", 160, 162, 162, 130, 162, 160, 162, 160, 162);
 	for (i = 0; i < 2; i++)
 	{
 		Vsol[i] = V2[i] - V1[i];
@@ -347,10 +344,10 @@ void prueba5(int* puntuacion) {
 void prueba6(int* puntuacion)
 {
 	float anos = 0; int fallolocal = 0;
-	printf("Si la ecuacion de la velocidad es dx/dt,y la velocidad media de la nave es de 40.300 km/s,cuanto tiempo tardar·s en aÒos hasta Urano?\n");
+	printf("Si la ecuacion de la velocidad es dx/dt,y la velocidad media de la nave es de 40.300 km/s,cuanto tiempo tardar√°s en a√±os hasta Urano?\n");
 	printf("Sabemos que el vector de posicion de urano con respecto a la nave espacial es (2850,-50) en millones de kilometros:\n");
 	do {
-		printf("introduce el numero de aÒos: ");
+		printf("introduce el numero de a√±os: ");
 		scanf_s("%f", &anos);
 		if (anos <= 7.8 || 8.2 <= anos) {
 			printf("\nDesgraciadamente sus calculos no son correctos. Vuleve a intentarlo.\n");
@@ -358,7 +355,7 @@ void prueba6(int* puntuacion)
 
 		}
 		else {
-			printf("\nSus calculos son exactos, tardaremos aproximadamente %.2f aÒos en llegar a Urano.\n", anos);
+			printf("\nSus calculos son exactos, tardaremos aproximadamente %.2f a√±os en llegar a Urano.\n", anos);
 		}
 
 	} while ((fallolocal < 3) && (anos <= 7.8 || 8.2 <= anos));
