@@ -233,7 +233,7 @@ void prueba2(int* puntuacion) {
 	fimg(img2, tamv1, tamv2);
 	fimg(img3, tamv1, tamv2);
 	printf("Escribe la clave:");
-	while ((i < 9) && fallos <= 3) {
+	while ((i < 9)) {
 		scanf_s("%d", &sol);
 		if (sol == clave[i])
 			i++;
@@ -242,7 +242,7 @@ void prueba2(int* puntuacion) {
 		fallos++;
 	}
 	printf("Enhorabuena, has pasado la prueba\n");
-	*puntuacion = *puntuacion + (300 - fallos * 100);
+	*puntuacion = *puntuacion + (300 - fallos * 30);
 }
 void prueba3(int* puntuacion)
 {
